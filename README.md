@@ -16,13 +16,15 @@
 - Detailed rectangle collisions (use bump.lua https://github.com/kikito/bump.lua)
 - A way to create interactives **menus** (just use `curses` by default)
 
-## How to use luadc?
+## How to install luadc?
 `luadc` is an easy to use terminal library, it rebinds `curses` methods but also add more features to it, in basic Lua.
 
 First of all install `lua-rocks` via your operating system (https://luarocks.org/#quick-start)
 
-Then require it in your main code
+Then you just have to require it in your main code
 
 ```
 require("luadc")
 ```
+
+## How to use luadc ?
