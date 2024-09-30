@@ -20,8 +20,9 @@
 `luadc` is an easy to use terminal library, it rebinds `curses` methods but also add more features to it, in basic Lua.
 
 First of all install `lua-rocks` via your operating system (https://luarocks.org/#quick-start).
+Then install `lcurses` from `lua-rocks` with `lua-rocks install lcurses`.
 
-Then you just have to require it in your main code.
+After that, you just have to require it in your main code.
 
 ```lua
 require("luadc")
