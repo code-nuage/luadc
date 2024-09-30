@@ -12,19 +12,45 @@
 - Simple collisions detection
 
 `luadc` is a bad choice if you want:
-- 2D detailed graphics (use LÖVE https://love2d.org/)
-- Detailed rectangle collisions (use bump.lua https://github.com/kikito/bump.lua)
+- 2D detailed graphics (use LÖVE https://love2d.org/ instead)
+- Detailed aligned rectangle collisions (use bump.lua https://github.com/kikito/bump.lua instead)
 - A way to create interactives **menus** (just use `curses` by default)
 
 ## How to install luadc?
 `luadc` is an easy to use terminal library, it rebinds `curses` methods but also add more features to it, in basic Lua.
 
-First of all install `lua-rocks` via your operating system (https://luarocks.org/#quick-start)
+First of all install `lua-rocks` via your operating system (https://luarocks.org/#quick-start).
 
-Then you just have to require it in your main code
+Then you just have to require it in your main code.
 
-```
+```lua
 require("luadc")
 ```
 
 ## How to use luadc ?
+`luadc` uses an update-draw loop that you have to intitialize in your main file.
+
+You can check for inputs by using `luadc.input(<input>, input)`.
+
+You can draw squares at the screen by using `luadc.draw_block` giving it to the `luadc.draw` function.
+```lua
+require("luadc")
+player = {
+  x, y = 0, 0,
+}
+
+
+luadc.update()
+  if luadc.input("a", input) then
+    player.x = player.x - 1
+  else if luadc.input("d", input) then
+    player.x = player.x + 1
+  end
+end
+
+luadc.draw()
+  luadc.draw_block("fill", "O", player.x, player.y)
+end
+
+luadc.init()
+```
