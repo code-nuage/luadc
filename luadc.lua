@@ -21,6 +21,7 @@ luadc = {}
 
 local tiles = {"█", "▓", "▒", "░"} -- Tiles with grease to draw
 local map = {} -- Map that stores blocks added with luadc.add_block()
+local menus = {} 
 
 -- Interfaces
 
@@ -62,7 +63,6 @@ function luadc.init()
     curses.curs_set(0)
 
     while true do
-
         luadc.draw()
         screen:refresh()
 
@@ -117,21 +117,50 @@ function luadc.draw_collisions()
 end
 
 -- Menu management
+function luadc.add_menu(name, table, func)
+    menus[name] = {
+        status = false,
+        selector = 1,
+        texts = table,
+        functions = func
+    }
+end
 
-function luadc.menu(table)
+function luadc.move_menu(menu, direction) 
+    if direction == 'down' then
+        if menus[menu].selector < #menus[menu].texts then
+            menus[menu].selector = menus[menu].selector + 1
+        end
+    elseif direction == 'up' then
+        if menus[menu].selector > 1 then
+            menus[menu].selector = menus[menu].selector - 1
+        end
+    end
+end
+
+function luadc.execute_menu(menu)
+    menus[menu].functions[menus[menu].selector]()
+end
+
+function luadc.draw_menu(menu)
     local max_size = 0
 
-    for k, v in ipairs(table) do
-        if max_size < string.len(table[k]) then
-            max_size = string.len(table[k])
+    for k, v in ipairs(menus[menu].texts) do
+        if max_size < string.len(v) then
+            max_size = string.len(v)
         end
     end
 
     local x = math.floor(luadc.WINDOW_W / 2) - math.floor(max_size / 2)
-    local y = math.floor(luadc.WINDOW_H / 2) - math.floor(#table * 2 - 1)
+    local y = math.floor(luadc.WINDOW_H / 2) - math.floor((#menus[menu].texts * 2 - 1) / 2)
 
-    for k, v in ipairs(table) do
-        screen:mvaddstr(y + k * 2 - 1, x, table[k])
+    local selector_x = x - 2
+    local selector_y = y + 2 * (menus[menu].selector - 1)
+
+    screen:mvaddstr(selector_y, selector_x, ">")
+
+    for k, v in ipairs(menus[menu].texts) do
+        screen:mvaddstr(y + k * 2 - 2, x, menus[menu].texts[k])
     end
 end
 
