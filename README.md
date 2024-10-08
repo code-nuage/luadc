@@ -17,7 +17,7 @@
 - A way to create interactives **menus** (just use `curses` by default)
 
 `luadc` is able to provide an easy way to do this
-![Luadc Showcase](luadc\ exemple/luadc-showcase.gif)
+![luadc Showcase](https://raw.githubusercontent.com/code-nuage/luadc/refs/heads/main/luadc%20exemple/luadc-showcase.gif)
 
 ## How to install luadc?
 `luadc` is an easy to use terminal library, it rebinds `curses` methods but also add more features to it, in basic Lua.
