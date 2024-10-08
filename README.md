@@ -17,6 +17,7 @@
 - A way to create interactives **menus** (just use `curses` by default)
 
 `luadc` is able to provide an easy way to do this
+
 ![luadc Showcase](https://raw.githubusercontent.com/code-nuage/luadc/refs/heads/main/luadc%20exemple/luadc-showcase.gif)
 
 ## How to install luadc?
