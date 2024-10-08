@@ -19,7 +19,6 @@ end
 function luadc.draw() -- Required method to call draws with luadc
     if exemple.status == 0 then
         menu.draw()
-        luadc.draw_menu('main') -- Write menu at the middle of the screen
     elseif exemple.status == 1 then
         map.draw() 
         player.draw() 

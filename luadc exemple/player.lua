@@ -1,4 +1,13 @@
 player = {
+    controls = {
+        up = 'w',
+        down = 's',
+        left = 'a',
+        right = 'd',
+        attack = 'k',
+        confirm = ' '
+    },
+
     load = function()
         player.x, player.y = 3, 3
         player.w, player.h = 1, 1
